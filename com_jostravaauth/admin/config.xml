@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<fieldset
+		name="params" addfieldprefix="JLTRY\Component\Jogoogleauth\Administrator\Field"
+		label="JGLOBAL_FIELDSET_DISPLAY_OPTIONS">
+		<field
+			name="clientid"
+			type="text"
+			maxlength="128"
+			size="64"
+			label="COM_JOSTRAVAAUTH_FIELD_CLIENTID"
+			description="COM_JOSTRAVAAUTH_FIELD_CLIENTID_DESC">
+		</field>
+		<field
+			name="clientsecret"
+			type="text"
+			maxlength="128"
+			size="64"
+			label="COM_JOSTRAVAAUTH_FIELD_CLIENTSECRET"
+			description="COM_JOSTRAVAAUTH_FIELD_CLIENTSECRET_DESC">
+		</field>
+		<field
+			name="redirecturi"
+			type="uri"
+			readonly="true"
+			default="index.php&#63;option&#61;com_jostravaauth&#38;task&#61;user.auth"
+			relative="true"
+			size="64"
+			label="COM_JOSTRAVAAUTH_FIELD_REDIRECTURI"
+			description="COM_JOSTRAVAAUTH_FIELD_REDIRECTURI_DESC">
+		</field>
+	</fieldset>
+	<fieldset
+		name="permissions"
+		label="JCONFIG_PERMISSIONS_LABEL"
+		description="JCONFIG_PERMISSIONS_DESC">
+		<field
+			name="rules"
+			type="rules"
+			label="JCONFIG_PERMISSIONS_LABEL"
+			class="inputbox"
+			validate="rules"
+			filter="rules"
+			component="com_jgoogle"
+			section="component"	/>
+	</fieldset>
+
+</config>

@@ -1,0 +1,253 @@
+[OAUTH] 11:43:53:construct: JGoogleControllerUser:Array
+(
+    [option] => com_jogoogleauth
+    [name] => user
+)
+
+[OAUTH] 11:43:53:construct:Itemid new client
+[OAUTH] 11:43:53:construct:client OK
+[OAUTH] 11:43:53:construct:end before oauth_client
+[OAUTH] 11:45:20:construct: JGoogleControllerUser:Array
+(
+    [option] => com_jogoogleauth
+    [name] => user
+)
+
+[OAUTH] 11:45:20:construct:Itemid new client
+[OAUTH] 11:45:20:construct:client OK
+[OAUTH] 11:45:20:construct:end before oauth_client
+[OAUTH] 11:45:20:construct:end after oauth_client:https://www.jltryoen.fr/index.php?option=com_jogoogleauth&task=user.auth
+[OAUTH] 11:45:20:construct:end
+[OAUTH] 11:45:20:authentificate
+[OAUTH] 11:45:20:getapplication OK
+[OAUTH] 11:45:20:userstate
+[OAUTH] 11:45:20:oauth_clientJoomla\OAuth2\Client
+[OAUTH] 11:45:23:construct: JGoogleControllerUser:Array
+(
+    [option] => com_jogoogleauth
+    [name] => user
+)
+
+[OAUTH] 11:45:23:construct:Itemid new client
+[OAUTH] 11:45:23:construct:client OK
+[OAUTH] 11:45:23:construct:end before oauth_client
+[OAUTH] 11:45:23:construct:end after oauth_client:https://www.jltryoen.fr/index.php?option=com_jogoogleauth&task=user.auth
+[OAUTH] 11:45:23:construct:end
+[OAUTH] 11:45:23:google auth
+[OAUTH] 11:45:26:isauthentificated
+[OAUTH] 11:45:26:resgistration allowed 
+[OAUTH] 11:45:26:on user login Array
+(
+    [autoregister] => 1
+)
+stdClass Object
+(
+    [username] => jltryoen
+    [name] => jltryoen
+    [email] => jltryoen@gmail.com
+    [type] => GMail
+    [password_clear] => jltryoen@gmail.comJLBRIT
+    [password] => jltryoen@gmail.comJLBRIT
+    [siteurl] => https://www.jltryoen.fr/
+    [fromname] => jltryoen
+    [mailfrom] => postmaster@jltryoen.fr
+    [sitename] => Le site de JL TRYOEN
+)
+
+[OAUTH] 11:45:26:user is not null 1Joomla\CMS\User\User Object
+(
+    [isRoot:protected] => 
+    [id] => 75
+    [name] => jltryoen
+    [username] => jltryoen
+    [email] => jltryoen@gmail.com
+    [password] => $2y$10$O9sutC4MvX4WOERH0Hwmserx/PDnIrBGIkuhKLebU4d100Y2UYwke
+    [password_clear] => 
+    [block] => 0
+    [sendEmail] => 0
+    [registerDate] => 2016-12-10 20:56:32
+    [lastvisitDate] => 2025-10-02 09:43:39
+    [activation] => 
+    [params] => {"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":"","a11y_mono":"0","a11y_contrast":"0","a11y_highlight":"0","a11y_font":"0","colorScheme":"","allowTourAutoStart":""}
+    [groups] => Array
+        (
+            [1] => 1
+            [13] => 13
+            [14] => 14
+            [15] => 15
+            [16] => 16
+        )
+
+    [guest] => 0
+    [lastResetTime] => 
+    [resetCount] => 0
+    [requireReset] => 0
+    [typeAlias] => 
+    [otpKey] => 
+    [otep] => 
+    [authProvider] => 
+    [_params:protected] => Joomla\Registry\Registry Object
+        (
+            [data:protected] => stdClass Object
+                (
+                    [admin_style] => 
+                    [admin_language] => 
+                    [language] => 
+                    [editor] => 
+                    [helpsite] => 
+                    [timezone] => 
+                    [a11y_mono] => 0
+                    [a11y_contrast] => 0
+                    [a11y_highlight] => 0
+                    [a11y_font] => 0
+                    [colorScheme] => 
+                    [allowTourAutoStart] => 
+                )
+
+            [initialized:protected] => 1
+            [separator:protected] => .
+        )
+
+    [_authGroups:protected] => 
+    [_authLevels:protected] => 
+    [_authActions:protected] => 
+    [_errorMsg:protected] => 
+    [_errors:protected] => Array
+        (
+        )
+
+    [useExceptions:Joomla\CMS\User\User:private] => 
+)
+
+[OAUTH] 11:45:26:user is not null 2Joomla\CMS\User\User Object
+(
+    [isRoot:protected] => 
+    [id] => 75
+    [name] => jltryoen
+    [username] => jltryoen
+    [email] => jltryoen@gmail.com
+    [password] => $2y$10$O9sutC4MvX4WOERH0Hwmserx/PDnIrBGIkuhKLebU4d100Y2UYwke
+    [password_clear] => 
+    [block] => 0
+    [sendEmail] => 0
+    [registerDate] => 2016-12-10 20:56:32
+    [lastvisitDate] => 2025-10-02 09:43:39
+    [activation] => 
+    [params] => {"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":"","a11y_mono":"0","a11y_contrast":"0","a11y_highlight":"0","a11y_font":"0","colorScheme":"","allowTourAutoStart":""}
+    [groups] => Array
+        (
+            [1] => 1
+            [13] => 13
+            [14] => 14
+            [15] => 15
+            [16] => 16
+        )
+
+    [guest] => 0
+    [lastResetTime] => 
+    [resetCount] => 0
+    [requireReset] => 0
+    [typeAlias] => 
+    [otpKey] => 
+    [otep] => 
+    [authProvider] => 
+    [_params:protected] => Joomla\Registry\Registry Object
+        (
+            [data:protected] => stdClass Object
+                (
+                    [admin_style] => 
+                    [admin_language] => 
+                    [language] => 
+                    [editor] => 
+                    [helpsite] => 
+                    [timezone] => 
+                    [a11y_mono] => 0
+                    [a11y_contrast] => 0
+                    [a11y_highlight] => 0
+                    [a11y_font] => 0
+                    [colorScheme] => 
+                    [allowTourAutoStart] => 
+                )
+
+            [initialized:protected] => 1
+            [separator:protected] => .
+        )
+
+    [_authGroups:protected] => 
+    [_authLevels:protected] => 
+    [_authActions:protected] => 
+    [_errorMsg:protected] => 
+    [_errors:protected] => Array
+        (
+        )
+
+    [useExceptions:Joomla\CMS\User\User:private] => 
+)
+
+[OAUTH] 11:45:26:user is not null 3Joomla\CMS\User\User Object
+(
+    [isRoot:protected] => 
+    [id] => 75
+    [name] => jltryoen
+    [username] => jltryoen
+    [email] => jltryoen@gmail.com
+    [password] => $2y$10$O9sutC4MvX4WOERH0Hwmserx/PDnIrBGIkuhKLebU4d100Y2UYwke
+    [password_clear] => 
+    [block] => 0
+    [sendEmail] => 0
+    [registerDate] => 2016-12-10 20:56:32
+    [lastvisitDate] => 2025-10-02 09:43:39
+    [activation] => 
+    [params] => {"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":"","a11y_mono":"0","a11y_contrast":"0","a11y_highlight":"0","a11y_font":"0","colorScheme":"","allowTourAutoStart":""}
+    [groups] => Array
+        (
+            [1] => 1
+            [13] => 13
+            [14] => 14
+            [15] => 15
+            [16] => 16
+        )
+
+    [guest] => 0
+    [lastResetTime] => 
+    [resetCount] => 0
+    [requireReset] => 0
+    [typeAlias] => 
+    [otpKey] => 
+    [otep] => 
+    [authProvider] => 
+    [_params:protected] => Joomla\Registry\Registry Object
+        (
+            [data:protected] => stdClass Object
+                (
+                    [admin_style] => 
+                    [admin_language] => 
+                    [language] => 
+                    [editor] => 
+                    [helpsite] => 
+                    [timezone] => 
+                    [a11y_mono] => 0
+                    [a11y_contrast] => 0
+                    [a11y_highlight] => 0
+                    [a11y_font] => 0
+                    [colorScheme] => 
+                    [allowTourAutoStart] => 
+                )
+
+            [initialized:protected] => 1
+            [separator:protected] => .
+        )
+
+    [_authGroups:protected] => 
+    [_authLevels:protected] => 
+    [_authActions:protected] => 
+    [_errorMsg:protected] => 
+    [_errors:protected] => Array
+        (
+        )
+
+    [useExceptions:Joomla\CMS\User\User:private] => 
+)
+
+[OAUTH] 11:45:26:on user login end
+[OAUTH] 11:45:26:on user login end redirect:†Ûi³ÿðÃå¶¼¨zwë

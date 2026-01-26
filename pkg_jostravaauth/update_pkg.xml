@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<updates>
+	<update>
+		<name>JOGoogleAuth</name>
+		<description>JO's Google Authentification</description>
+		<element>pkg_jogoogleauth</element>
+		<type>package</type>
+		<client>site</client>
+		<version>1.0.2</version>
+		<infourl title="JOGoogleAuth">https://github.com/JLTRY/jogoogleauth/</infourl>
+		<downloads>
+			<downloadurl type="full" format="zip">https://github.com/JLTRY/jogoogleauth/releases/download/v1.0.2/pkg_jogoogleauth-1.0.2.zip</downloadurl>
+		</downloads>
+		<tags>
+			<tag>Stable</tag>
+		</tags>
+		<maintainer>JL TRYOEN</maintainer>
+		<maintainerurl>https://github.com/JLTRY/jogoogleauth</maintainerurl>
+		<php_minimum>8.0</php_minimum>
+		<targetplatform name="joomla" version="(4\.[01234]|5\.[01234]|6\.[0])"/>
+		<sha256>C322CE4EFDD46111C80670FD84CADBFE32341B6FD8DA2FF93E20DFE796C088B4</sha256>
+		<sha384>6876F2A000BFE0B2C5FF1FECCD9F8AFC79352C02AACDEF0FFE2807BCFE5B5580D556E1F0005A5136D33C5CCDA1B0EF8A</sha384>
+		<sha512>DE118689C57043EDAA21DFB4273D12A7949D3190AFFEA6CFB07843F7969C014A98BFCF090581BC1F0293851E5AC50FC3307CFBD4432F78FD9D9EB0A26CD0219E</sha512>
+	</update>
+</updates>

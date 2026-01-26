@@ -1,0 +1,129 @@
+<?php
+/**
+ * @package     Joomla.Site
+ * @subpackage  com_jostravaauth
+ *
+ * @copyright   Copyright (C) 2005 - 2016 JL Tryoen, Inc. All rights reserved.
+ * @license     GNU General Public License version 3 or later; see LICENSE.txt
+ */
+
+namespace JLTRY\Component\JoStravaAuth\Site\Helper;
+use Joomla\CMS\Component\ComponentHelper;
+use Joomla\CMS\Date\Date;
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Log\Log;
+use Joomla\CMS\User\User;
+use Joomla\CMS\User\UserHelper;
+
+// phpcs:disable PSR1.Files.SideEffects
+\defined('_JEXEC') or die;
+// phpcs:enable PSR1.Files.SideEffects
+
+
+/**
+ * JGoogle component helper.
+ *
+ * @param   string  $submenu  The name of the active view.
+ *
+ * @return  void
+ *
+ * @since   1.6
+ */
+abstract class JOStravaAuthHelper
+{
+    /**
+     * This method will return a user object
+     *
+     *
+     * @param	array	$response Holds the user data.
+     * @param	array	$options	Array holding options (remember, autoregister, group).
+     *
+     * @return	object	A User object
+     */	
+    public static function getUser($response, $options = array())
+    {
+        if ($id = intval(UserHelper::getUserId($response['username'])))  {
+            $instance = User::getInstance();
+            $instance->load($id);
+            //save password
+            //$instance->set('password'		, UserHelper::hashPassword($response['password']));
+            //$instance->save();
+            return $instance;
+        }
+        return null;
+    }
+    
+    /**
+     * This method will return a user object
+     *
+     *
+     * @param	array	$response Holds the user data.
+     * @param	array	$options	Array holding options (remember, autoregister, group).
+     *
+     * @return	object	A User object
+     */	
+    
+     
+    public static function registerUser($response)
+    {
+        $config	= ComponentHelper::getParams('com_users');
+        // Default to Registered.
+        $defaultUserGroup = $config->get('new_usertype', 2);
+        $instance = User::getInstance();
+        $instance->set('id'			, 0);
+        $instance->set('name'			, $response['username']);
+        $instance->set('username'		, $response['username']);
+        $instance->set('password'		, UserHelper::hashPassword($response['password']));
+        $instance->set('email'			, $response['email']);	// Result should contain an email (check)
+        $instance->set('usertype'		, 'deprecated');
+        $instance->set('groups'		, array($defaultUserGroup));
+
+        if (!$instance->save()) {
+            Factory::getApplication()->enqueueMessage( $instance->getError(),'error');
+        }
+        return $instance;
+    }
+
+
+    /**
+     * Checks if a folder exist and return canonicalized absolute pathname (long version)
+     * @param string $folder the path being checked.
+     * @return mixed returns the canonicalized absolute pathname on success otherwise FALSE is returned
+     */
+    static function folder_exist($folder)
+    {
+        // Get canonicalized absolute pathname
+        $path = realpath($folder);
+
+        // If it exist, check if it's a directory
+        if($path !== false AND is_dir($path))
+        {
+            // Return canonicalized absolute pathname
+            return $path;
+        }
+
+        // Path/folder does not exist
+        return false;
+    }
+
+    public static function addLogger() {
+        Log::addLogger(
+            array(
+             // Sets file name.
+             'text_file' => 'com_jostravaauth.php',
+             // Sets the format of each line.
+             'text_entry_format' => '{DATETIME} {PRIORITY} {MESSAGE}'
+            ),
+            // Sets all but DEBUG log level messages to be sent to the file.
+            Log::ALL,
+            // The log category which should be recorded in this file.
+            array('com_jostravaauth')
+        );
+    }
+
+    public static function Log($msg, $type = Log::WARNING ){
+        Log::add($msg, $type, 'com_jostravaauth');
+    }
+}
+
