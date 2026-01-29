@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="5.0" client="site" method="upgrade">
+    <name>mod_jostrava</name>
+    <author>JL TRYOEN, Inc.</author>
+    <version>1.0.0</version>
+    <description>Module to display club activities from com_jostravaauth</description>
+
+    <files>
+        <filename module="mod_jostrava">mod_jostrava.php</filename>
+        <filename>helper.php</filename>
+        <folder>tmpl</folder>
+        <folder>services</folder>
+    </files>
+
+    <config>
+        <fields name="params">
+            <fieldset name="basic" label="Basic">
+                <field name="club_id" type="text" label="Club ID" description="ID of the club to pull activities for" />
+                <field name="limit" type="number" default="10" label="Limit" description="How many activities to show" />
+                <field name="title_field" type="text" default="name" label="Title field" description="Which JSON field to use for the activity title" />
+                <field name="date_field" type="text" default="start_date_local" label="Date field" description="Which JSON field to use for the activity date" />
+            </fieldset>
+        </fields>
+    </config>
+</extension>
