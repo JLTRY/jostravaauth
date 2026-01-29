@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="5.0" client="site" method="upgrade">
+	<name>MOD_JOSTRAVA</name>
+	<author>JL TRYOEN</author>
+	<version>1.0.0</version>
+	<creationDate>January 30, 2025</creationDate>
+	<description>MOD_JOSTRAVA_DESCRIPTION</description>
+	<copyright>Copyright (C) 2026 JL TRYOEN. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL</license>
+	<authorEmail>jltryoen@orange.fr</authorEmail>
+	<authorUrl>https://github.com/JLTRY/jostrava</authorUrl>
+	<namespace path="src">JLTRY\Module\JOStrava</namespace>
+	<files>
+		<filename>index.html</filename>	 
+		<folder>tmpl</folder>
+		<folder module="mod_jostrava">services</folder>
+		<folder>src</folder>
+		<folder>language</folder>
+	</files>
+	<media destination="mod_jostrava" folder="media">
+		<folder>images</folder>
+	</media>
+	<scriptfile>install.jostrava.php</scriptfile>
+	<config>
+		<fields name="params">
+			<fieldset name="basic" label="Basic">
+				<field name="club_id" type="text" label="Club ID" description="ID of the club to pull activities for" />
+				<field name="limit" type="number" default="10" label="Limit" description="How many activities to show" />
+			</fieldset>
+		</fields>
+	</config>
+</extension>
