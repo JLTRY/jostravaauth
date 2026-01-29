@@ -32,79 +32,15 @@ use Joomla\CMS\User\UserHelper;
  */
 abstract class JOStravaAuthHelper
 {
-    /**
-     * This method will return a user object
-     *
-     *
-     * @param	array	$response Holds the user data.
-     * @param	array	$options	Array holding options (remember, autoregister, group).
-     *
-     * @return	object	A User object
-     */	
-    public static function getUser($response, $options = array())
+    public static function jsonAnswer($data)
     {
-        if ($id = intval(UserHelper::getUserId($response['username'])))  {
-            $instance = User::getInstance();
-            $instance->load($id);
-            //save password
-            //$instance->set('password'		, UserHelper::hashPassword($response['password']));
-            //$instance->save();
-            return $instance;
-        }
-        return null;
-    }
-    
-    /**
-     * This method will return a user object
-     *
-     *
-     * @param	array	$response Holds the user data.
-     * @param	array	$options	Array holding options (remember, autoregister, group).
-     *
-     * @return	object	A User object
-     */	
-    
-     
-    public static function registerUser($response)
-    {
-        $config	= ComponentHelper::getParams('com_users');
-        // Default to Registered.
-        $defaultUserGroup = $config->get('new_usertype', 2);
-        $instance = User::getInstance();
-        $instance->set('id'			, 0);
-        $instance->set('name'			, $response['username']);
-        $instance->set('username'		, $response['username']);
-        $instance->set('password'		, UserHelper::hashPassword($response['password']));
-        $instance->set('email'			, $response['email']);	// Result should contain an email (check)
-        $instance->set('usertype'		, 'deprecated');
-        $instance->set('groups'		, array($defaultUserGroup));
-
-        if (!$instance->save()) {
-            Factory::getApplication()->enqueueMessage( $instance->getError(),'error');
-        }
-        return $instance;
-    }
-
-
-    /**
-     * Checks if a folder exist and return canonicalized absolute pathname (long version)
-     * @param string $folder the path being checked.
-     * @return mixed returns the canonicalized absolute pathname on success otherwise FALSE is returned
-     */
-    static function folder_exist($folder)
-    {
-        // Get canonicalized absolute pathname
-        $path = realpath($folder);
-
-        // If it exist, check if it's a directory
-        if($path !== false AND is_dir($path))
-        {
-            // Return canonicalized absolute pathname
-            return $path;
-        }
-
-        // Path/folder does not exist
-        return false;
+        ob_end_clean();
+        header('Content-Type: application/json');
+        header('Cache-Control: max-age=120, private, must-revalidate');
+        header('Content-Disposition: attachment; filename="jogallery.json"');
+        ob_end_clean();
+        echo $data;
+        Factory::getApplication()->close();
     }
 
     public static function addLogger() {
