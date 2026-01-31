@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Jofacebook package installation script
+ * JoStrava module installation script
  *
- * @package jofacebook
+ * @package jostravaauth
   *
  * @author JL TRYOEN
- * @copyright Copyright (C) 2007-2025 JL TRYOEN
+ * @copyright Copyright (C) 2026 JL TRYOEN
  * @license https://www.gnu.org/licenses/gpl-3.0.html GNU/GPL
  * @link https://github.com/JLTRY/plg_jofacebook
  */
@@ -27,7 +27,7 @@ use Joomla\CMS\Language\Text;
  * @package Attachments
  */
 // phpcs:ignore
-class pkg_JoGoogleAuthInstallerScript implements InstallerScriptInterface
+class mod_JoStravaInstallerScript implements InstallerScriptInterface
 {
     /**
      * Attachments component install function
@@ -77,7 +77,7 @@ class pkg_JoGoogleAuthInstallerScript implements InstallerScriptInterface
         $app = Factory::getApplication();
         // Load the installation language
         $lang = $app->getLanguage();
-        $lang->load('pkg_jogoogleauth.sys', dirname(__FILE__), 'en-GB');
+        $lang->load('mod_jostrava.sys', dirname(__FILE__), 'en-GB');
         return true;
     }
 

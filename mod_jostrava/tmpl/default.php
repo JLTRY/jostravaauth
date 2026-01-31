@@ -14,7 +14,9 @@ $club_id = $params->get('club_id', 'trycoaching');
 $strava_url = "https://www.strava.com/clubs/" . $club_id ."/recent_activity";
 $imgurl = Uri::root(true) . "/media/mod_jostrava/images";
 ?>
-
+<?php if(!is_array($items)) : 
+        echo $items;
+    else: ?>
 <div class="mod-mod_jostrava">
     <br>
     <?php if (empty($items)) : ?>
@@ -42,3 +44,4 @@ $imgurl = Uri::root(true) . "/media/mod_jostrava/images";
     </div>
     
 </div>
+ <?php endif; ?>

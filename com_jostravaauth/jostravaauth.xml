@@ -2,11 +2,11 @@
 <extension type="component" version="5.0" method="upgrade">
 	<name>com_jostravaauth</name>
 	<!-- The following elements are optional and free of formatting constraints -->
-	<creationDate>October  3, 2025</creationDate>
+	<creationDate>January 30, 2026</creationDate>
 	<author>JL Tryoen</author>
 	<authorEmail>jltryoen@orange.fr</authorEmail>
 	<authorUrl>http://www.jltryoen.fr</authorUrl>
-	<copyright>Copyright (C) 2025 JL TRYOEN. All rights reserved.</copyright>
+	<copyright>Copyright (C) 2026 JL TRYOEN. All rights reserved.</copyright>
 	<license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL</license>
 	<!--  The version string is recorded in the components table -->
 	<version>1.0.2</version>

@@ -9,16 +9,19 @@
 
 namespace JLTRY\Component\JoStravaAuth\Site\Controller;
 
-use Joomla\OAuth2\Client;
 use Joomla\CMS\Factory;
+use Joomla\CMS\Http\HttpFactory;
+use Joomla\CMS\Language\Multilanguage;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\Controller\BaseController;
-use Joomla\CMS\Language\Multilanguage;
-use Joomla\CMS\Uri\Uri;
+use Joomla\CMS\Response\JsonResponse;
 use Joomla\CMS\Router\Route;
-use Joomla\CMS\Http\HttpFactory;
+use Joomla\CMS\Uri\Uri;
 use Joomla\CMS\Version;
+use Joomla\Http\Exception\UnexpectedResponseException;
+use Joomla\OAuth2\Client;
 use Joomla\Registry\Registry;
+
 use JLTRY\Component\JoStravaAuth\Site\Helper\JOStravaAuthHelper;
 
 // phpcs:disable PSR1.Files.SideEffects
@@ -61,7 +64,7 @@ class UserController extends BaseController {
         $oauth_client->setOption('sendheaders',true);
         $oauth_client->setOption('userefresh', true);
         $oauth_client->setOption('client_id','token');
-        $oauth_client->setOption('scope',array("activity:write,read"));
+        $oauth_client->setOption('scope',array("activity:write,read,read_all,profile:read_all"));
         $oauth_client->setOption('requestparams',
                                  array('response_type' => 'code', 'approval_prompt' => "force"));
         $params = $app->getParams('com_jostravaauth');
@@ -108,10 +111,11 @@ class UserController extends BaseController {
     public function login()
     {
         JOStravaAuthHelper::Log("login");
-
+        $input = Factory::getApplication()->input;
+        $force = $input->get('force', 0);
         // Try to reuse a stored token if available
         $stored = $this->loadStoredToken();
-        if ($stored) {
+        if ($stored && ($force == 0)) {
             JOStravaAuthHelper::Log("login:stored");
             if (is_string($stored)) {
                 $stored = json_decode($stored, true);
@@ -359,27 +363,54 @@ class UserController extends BaseController {
         }
         $this->log("getResponse start stored_token:" . print_r($this->stored_token['access_token'], true));
         $url = 'https://www.strava.com/api/v3/' . $path;
-        $response = $this->oauth_client->query($url, array(), $headers);
-        $this->log("getResponse :" . $response->getBody());
-        /*$response = $this->curlget($url);*/
-        echo JOStravaAuthHelper::jsonAnswer($response->getBody());
+        $this->log("getResponse url:" . $url);
+        $error = true;
+        $data = null;
+        try 
+        {
+            $response = $this->oauth_client->query($url, array(), $headers);
+            $this->log("getResponse :" . $response->getBody());
+            $error = false;
+            $message = 'Data retrieved successfully';
+            $data = json_decode($response->getBody());
+        }
+        catch(UnexpectedResponseException $e)
+        {
+            $this->log("getResponse UnexpectedResponseException:" . $e->getMessage());
+            $message = $e->getMessage();
+        }
+        catch(Exception $e)
+        {
+            $this->log("getResponse exception:" . $e->getMessage());
+            $message = $e->getMessage();
+        }
+        return JOStravaAuthHelper::jsonAnswer(json_encode(new JsonResponse($data, $message , $error)));
     }
 
-    public function getAthleteClubs()
+    public function getClubMembers()
     {
-        $path = 'athlete/clubs';
+        $input = Factory::getApplication()->input;
+        $club = $input->get('club_id', 'trycoaching');
+        $path = 'clubs/'. $club . '/members';
         return $this->getResponse($path);
     }
     
     public function getClubActivities()
     {
-        $path = 'clubs/trycoaching/activities?page=1&per_page=5';
+        $input = Factory::getApplication()->input;
+        $club_id = $input->get('club_id', 'trycoaching');
+        $path = 'clubs/'. $club_id .'/activities?page=1&per_page=5';
         return $this->getResponse($path);
     }
     
     public function getAthlete()
     {
+        $input = Factory::getApplication()->input;
+        $id = $input->get('id', null);
         $path= 'athlete';
+        if ($id) {
+            $path .= '/' . $id;
+        }
         return $this->getResponse($path);
     }
 };

@@ -15,7 +15,7 @@ mkfile_dir := $(dir $(mkfile_path))
 all: parts $(ZIPFILE) fixsha
 
 INSTALLS = com_jostravaauth \
-		mod_jostravaauth
+		mod_jostrava
 
 EXTRAS = 
 

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="4.0" method="upgrade">
+    <name>pkg_jostravaauth</name>
+    <packagename>jostravaauth</packagename>
+    <version>1.0.0</version>
+    <creationDate>January 30, 2026</creationDate>
+    <copyright>(C) 2026 JL TRYOEN. All rights reserved.</copyright>
+    <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license> 
+    <author>JL TRYOEN</author>
+    <authorEmail>jltryoen@orange.fr</authorEmail>
+    <authorUrl>https://github.com/JLTRY/jostravaauth</authorUrl>
+    <packager>JL TRYOEN</packager>
+    <packagerurl>https://github.com/JLTRY/jostravaauth</packagerurl>
+    <description>PKG_JOSTRAVAAUTH_DESCRIPTION</description>
+    <scriptfile>install.jostravaauth.php</scriptfile>
+    <files folder="packages">
+        <file type="module" id="jostrava" client="site">mod_jostrava.zip</file>
+        <file type="component" id="com_jostravaauth">com_jostravaauth.zip</file>
+    </files>
+    <languages>
+        <language tag="en-GB">language/en-GB/pkg_jostravaauth.sys.ini</language>
+        <language tag="fr-FR">language/fr-FR/pkg_jostravaauth.sys.ini</language>
+    </languages>
+
+    <updateservers>
+       <server type="extension" priority="1" name="JO's Strava auth updates">https://raw.githubusercontent.com/JLTRY/jostravaauth/master/pkg_jostravaauth/update_pkg.xml</server>
+    </updateservers>
+</extension>
