@@ -9,6 +9,7 @@
 
 defined('_JEXEC') or die;
 use Joomla\CMS\Uri\Uri;
+use JLTRY\Module\JOStrava\Site\Helper\ModJoStravaHelper;
 
 $club_id = $params->get('club_id', 'trycoaching');
 $strava_url = "https://www.strava.com/clubs/" . $club_id ."/recent_activity";
@@ -24,7 +25,7 @@ $imgurl = Uri::root(true) . "/media/mod_jostrava/images";
     <?php else : ?>
         <table class="table table-striped"><tbody>
             <?php foreach ($items as $act) :
-                $title = htmlspecialchars($act['name'] ?? 'Activity', ENT_QUOTES, 'UTF-8');
+                $title = ModJoStravaHelper::replaceSmileys($act['name']);
                 $author  = htmlspecialchars(($act['athlete']['firstname'] ?? '') . " " . ($act['athlete']['lastname'] ?? '') , ENT_QUOTES, 'UTF-8');
                 $type  = htmlspecialchars($act['type'] ?? '' ,ENT_QUOTES, 'UTF-8');
                 $img = $imgurl . "/" .(in_array($type, array("Swim", "Run", "Ride", "VirtualRide"))? $type :  "triathon") . ".jpg";
