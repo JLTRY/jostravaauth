@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <config>
 	<fieldset
-		name="params" addfieldprefix="JLTRY\Component\Jogoogleauth\Administrator\Field"
+		name="params"
 		label="JGLOBAL_FIELDSET_DISPLAY_OPTIONS">
 		<field
 			name="clientid"

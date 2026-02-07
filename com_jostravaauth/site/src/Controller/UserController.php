@@ -51,7 +51,7 @@ class UserController extends BaseController {
     {
         $this->log = true;
         JOStravaAuthHelper::addLogger();
-        $this->log("construct: JGoogleControllerUser:". print_r($config, true));
+        $this->log("construct: JoStravaControllerUser:". print_r($config, true));
         $app = Factory::getApplication();
         $return = $app->input->getString('return', '');
         $session = Factory::getSession();
@@ -257,11 +257,13 @@ class UserController extends BaseController {
             if ($token) {
                 $this->log("loadStoredToken: token found in session");
             }
-
-            $db = Factory::getDbo();
-
+        } catch (\Exception $e) {
+            $this->log("loadStoredToken error: " . $e->getMessage());
+        }
+        if ($token == null) {
             // Try component params first (useful for public/no-user flows)
             try {
+                $db = Factory::getDbo();
                 $query = $db->getQuery(true)
                     ->select($db->quoteName('params'))
                     ->from($db->quoteName('#__extensions'))
@@ -279,10 +281,8 @@ class UserController extends BaseController {
             } catch (\Exception $e) {
                 $this->log("loadStoredToken: component params read failed: " . $e->getMessage());
             }
-        } catch (\Exception $e) {
-            $this->log("loadStoredToken error: " . $e->getMessage());
         }
-        if (array_key_exists('saved_at', $token))
+        if ($token && array_key_exists('saved_at', $token))
         {
             $token['created'] = $token['saved_at'];
         }
