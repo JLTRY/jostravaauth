@@ -24,6 +24,7 @@
 	<config>
 		<fields name="params">
 			<fieldset name="basic" label="Basic">
+				<field name="root_url" type="text" label="Root URL" description="Root url to retrieve Strava activities" />
 				<field name="club_id" type="text" label="Club ID" description="ID of the club to pull activities for" />
 				<field name="limit" type="number" default="10" label="Limit" description="How many activities to show" />
 			</fieldset>

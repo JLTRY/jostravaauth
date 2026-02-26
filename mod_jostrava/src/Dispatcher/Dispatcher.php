@@ -20,8 +20,9 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\Helper\HelperFactoryAwareInterface;
 use Joomla\CMS\Helper\HelperFactoryAwareTrait;
 use Joomla\CMS\Helper\ModuleHelper;
-use Joomla\Registry\Registry;
 use Joomla\CMS\Log\Log;
+use Joomla\CMS\Uri\Uri;
+use Joomla\Registry\Registry;
 
 // phpcs:disable PSR1.Files.SideEffects
 \defined('_JEXEC') or die;
@@ -37,7 +38,8 @@ class Dispatcher extends AbstractModuleDispatcher implements HelperFactoryAwareI
     use HelperFactoryAwareTrait;
     protected function getLayoutData(): array    {        $data      = parent::getLayoutData();        $params    = $data['params'];        $layout    = $params->get('layout', 'default');
         $clubId    = $params->get('club_id', 'trycoaching');
+        $rootUrl   = $params->get('root_url', Uri::root());
         $limit     = (int) $params->get('limit', 10);
         Log::add("mod_jostrava getLayoutData", Log::WARNING, 'mod_jostrava');
-        $items     = ModJoStravaHelper::getClubActivities($clubId, $limit);        $this->module->cacheTime = 0;
+        $items     = ModJoStravaHelper::getClubActivities($rootUrl, $clubId, $limit);        $this->module->cacheTime = 0;
                 return array( 'module'   => $this->module,                      'app'      => $this->app,                      'input'    => $this->input,                      'params'   => new Registry($params),                      'clubid'   => $clubId,                      'items'    => $items);    }}?>

@@ -69,7 +69,7 @@ class ModJoStravaHelper
      * @param int $limit
      * @return array
      */
-    public static function getClubActivities($clubId, $limit = 10)
+    public static function getClubActivities($rootUrl, $clubId, $limit = 10)
     {
         if (empty($clubId)) {
             Log::add("mod_jostrava empty clubId", Log::WARNING, 'com_jostravaauth');
@@ -82,8 +82,7 @@ class ModJoStravaHelper
                    . '&club_id=' . $clubId;
                 /*. '&limit=' . intval($limit)
                 . '&format=json';*/
-
-            $url = Uri::root() . ltrim($query, '/');
+            $url = $rootUrl . ltrim($query, '/');
             Log::add("mod_jostrava get Url" . $url, Log::WARNING, 'com_jostravaauth');
             $http = HttpFactory::getHttp();
             $response = $http->get($url);
