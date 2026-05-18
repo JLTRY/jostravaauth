@@ -64,7 +64,7 @@ class UserController extends BaseController {
         $oauth_client->setOption('sendheaders',true);
         $oauth_client->setOption('userefresh', true);
         $oauth_client->setOption('client_id','token');
-        $oauth_client->setOption('scope',array("activity:write,read,read_all,profile:read_all"));
+        $oauth_client->setOption('scope',array("activity:write,activity:read,activity:read_all,profile:read_all"));
         $oauth_client->setOption('requestparams',
                                  array('response_type' => 'code', 'approval_prompt' => "force"));
         $params = $app->getParams('com_jostravaauth');
@@ -402,7 +402,7 @@ class UserController extends BaseController {
         $path = 'clubs/'. $club_id .'/activities?page=1&per_page=5';
         return $this->getResponse($path);
     }
-    
+
     public function getAthlete()
     {
         $input = Factory::getApplication()->input;
@@ -411,6 +411,21 @@ class UserController extends BaseController {
         if ($id) {
             $path .= '/' . $id;
         }
+        return $this->getResponse($path);
+    }
+
+    public function getAthleteActivities()
+    {
+        $input = Factory::getApplication()->input;
+        $path= '/athlete/activities';
+        return $this->getResponse($path);
+    }
+
+    public function getActivity()
+    {
+        $input = Factory::getApplication()->input;
+        $id = $input->get('id', null);
+        $path= '/activities/' . $id;
         return $this->getResponse($path);
     }
 };

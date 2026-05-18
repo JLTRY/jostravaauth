@@ -37,7 +37,7 @@ abstract class JOStravaAuthHelper
         ob_end_clean();
         header('Content-Type: application/json');
         header('Cache-Control: max-age=120, private, must-revalidate');
-        header('Content-Disposition: attachment; filename="jogallery.json"');
+        header('Content-Disposition: attachment; filename="jostrava.json"');
         ob_end_clean();
         echo $data;
         Factory::getApplication()->close();
