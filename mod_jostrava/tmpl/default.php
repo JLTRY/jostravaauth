@@ -28,12 +28,16 @@ $imgurl = Uri::root(true) . "/media/mod_jostrava/images";
                 $title = ModJoStravaHelper::replaceSmileys($act['name']);
                 $author  = htmlspecialchars(($act['athlete']['firstname'] ?? '') . " " . ($act['athlete']['lastname'] ?? '') , ENT_QUOTES, 'UTF-8');
                 $type  = htmlspecialchars($act['type'] ?? '' ,ENT_QUOTES, 'UTF-8');
-                $img = $imgurl . "/" .(in_array($type, array("Swim", "Run", "Ride", "VirtualRide"))? $type :  "triathon") . ".jpg";
+                $img = $imgurl . "/" .(in_array($type, array("Swim", "Run", "Ride", "VirtualRide"))? $type :  "triathlon") . ".jpg";
+                $distance = ModJoStravaHelper::formatDistance($act['distance']);
+                $duration = ModJoStravaHelper::formatTime($act['elapsed_time']);
             ?>
                 <tr>
                    <td><strong><?php echo $author; ?></strong></td>
                    <td><img src="<?php echo $img; ?>"/></td>
                    <td><strong><?php echo $title; ?></strong></td>
+                   <td><strong><?php echo $distance; ?></strong></td>
+                   <td><strong><?php echo $duration; ?></strong></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>

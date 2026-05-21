@@ -57,6 +57,29 @@ class ModJoStravaHelper
     }
 
 
+    public static function formatDistance($dist)
+    {
+        if ($dist == "") {
+            return "";
+        }
+        if ((float)$dist < 1000){
+            return sprintf("%dm", $dist);
+        }
+        else {
+            return sprintf("%0.2fkm", (float)$dist/1000);
+        }
+    }
+
+    public static function formatTime($sec)
+    {
+        $hours = floor(((int)$sec) / 3600);
+        $minutes = floor(((int)$sec) / 60) % 60;
+        $seconds = ((int)$sec) % 60;
+        return sprintf("%02d:%02d:%02d", (int)$hours, (int)$minutes, (int)$seconds);
+    }
+
+
+
     /**
      * Fetch club activities by calling the component task user.getClubActivities
      *
